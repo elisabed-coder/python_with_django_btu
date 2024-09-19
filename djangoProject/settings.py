@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # my apps
     "blogs",
+    "bookShop",
+    "students"
 
     # third-party
 

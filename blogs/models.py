@@ -11,6 +11,10 @@ class Blog(models.Model):
     content = models.TextField(default="No content available")  # Added default value
     tags = models.ManyToManyField('Tag')
 
+    def get_tag_list(self):
+        tags = ", ".join([tag.name for tag in self.tags.all()])
+        return tags
+
     def __str__(self):
         return self.title
 
