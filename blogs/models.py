@@ -1,11 +1,14 @@
+import datetime
+from email.policy import default
+
 from django.db import models
 
 # Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-    date_published = models.DateTimeField
-    content = models.TextField
+    date_published = models.DateTimeField(default=datetime.datetime.now)
+    content = models.TextField(default="No content available")  # Added default value
     tags = models.ManyToManyField('Tag')
 
     def __str__(self):
@@ -26,9 +29,10 @@ class Tag(models.Model):
         return self.name
 
 class Comment(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=100)
-    content = models.TextField
+    content = models.TextField(default="No content yet")
+    date = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return self.content
