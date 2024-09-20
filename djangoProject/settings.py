@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # third-party
     'import_export',
+    'adminsortable2',
 
 ]
 

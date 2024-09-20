@@ -39,5 +39,7 @@ class Student(models.Model):
         calculated_age = self.calculate_age()
         if calculated_age < 18:
             raise ValidationError('Age must be at least 18.')
+    class Meta:
+        ordering = ["name", "age"]
 
 
