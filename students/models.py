@@ -2,13 +2,21 @@ from django.db import models
 from datetime import date
 from django.core.exceptions import ValidationError
 
+
+
+class Course(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 # Create your models here.
 class Student(models.Model):
     name = models.CharField(max_length=100)
     date_of_birth = models.DateField()
     age = models.IntegerField(editable=False)
     courses = models.ManyToManyField('Course')
-
 
     def __str__(self):
         return self.name
@@ -32,11 +40,4 @@ class Student(models.Model):
         if calculated_age < 18:
             raise ValidationError('Age must be at least 18.')
 
-
-
-class Course(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 

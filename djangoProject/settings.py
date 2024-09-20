@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     # my apps
     "blogs",
     "bookShop",
-    "students"
+    "students",
 
     # third-party
+    'import_export',
 
 ]
 
