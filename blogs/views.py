@@ -38,3 +38,4 @@ def blog_details_view(request,  blog_id):
     {comments}
     """
     return HttpResponse(html, status=200)
+

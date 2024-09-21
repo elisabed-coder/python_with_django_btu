@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "blogs",
     "bookShop",
     "students",
+    "blog_list",
 
     # third-party
     'import_export',
