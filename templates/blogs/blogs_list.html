@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="eng">
-<head>
-    <meta charset="UTF-8">
-    <title>Title of the document</title>
-</head>
+{% extends "base.html" %}
+{% block content %}
+    {% for article in articles %}
+    <h2>{{ article.title}}</h2>
+    <p>{{ article.content | truncatewords:30 }}</p>
+    <h4>{{ article.author }}</h4>
 
-<body>
-    <h1>Blogs</h1>
-    {% for blog in blogs%}
-    <h2>{{ blog.title}}</h2>
-    <p>{{ blog.content | truncatewords:30 }}</p>
-    <h4>{{ blog.author }}</h4>
+        <a href="{% url 'artice_detail' article.id %}">click dor details</a>
+
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}

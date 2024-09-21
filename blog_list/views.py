@@ -1,13 +1,18 @@
-from lib2to3.fixes.fix_input import context
-
 from django.shortcuts import render
 
-from blog_list.models import Blog
+from blog_list.models import Article
 
 
 # Create your views here.
 
-def blog_list(request):
-    all_Blogs = Blog.objects.all()
-    context = {"blogs": all_Blogs}
+def articles(request):
+    articles = Article.objects.all()
+    context = {"articles": articles}
     return render(request, 'blogs/blogs_list.html', context=context)
+
+def artice_detail(request, article_id):
+    article = Article.objects.get(pk=article_id)
+    context = {"article": article}
+
+    return render(request, 'blogs/blogs_details.html', context=context)
+
