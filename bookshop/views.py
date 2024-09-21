@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from bookShop.models import Books
+from bookshop.models import Books
 
 
 # Create your views here.

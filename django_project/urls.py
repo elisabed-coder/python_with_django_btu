@@ -21,7 +21,7 @@ from blog_list.views import articles, artice_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogs/', include("blogs.urls")),
-    path('bookshop/', include('bookShop.urls')),
+    path('bookshop/', include('bookshop.urls')),
     path('students/', include('students.urls')),
 
     path('', articles, name='blogs_list'),

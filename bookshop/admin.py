@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from bookShop.models import Books, Authors
+from bookshop.models import Books, Authors
 
 # Register your models here.
 

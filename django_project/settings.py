@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # my apps
     "blogs",
-    "bookShop",
+    "bookshop",
     "students",
     "blog_list",
 
