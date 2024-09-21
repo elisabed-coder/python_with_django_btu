@@ -11,8 +11,10 @@ def articles(request):
     return render(request, 'blogs/blogs_list.html', context=context)
 
 def artice_detail(request, article_id):
-    article = Article.objects.get(pk=article_id)
+    try:
+        article = Article.objects.get(pk=article_id)
+    except Article.DoesNotExist:
+        return  render(request, "not_found_404.html")
     context = {"article": article}
-
     return render(request, 'blogs/blogs_details.html', context=context)
 
