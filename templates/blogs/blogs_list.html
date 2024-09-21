@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="eng">
 <head>
-<title>Title of the document</title>
+    <meta charset="UTF-8">
+    <title>Title of the document</title>
 </head>
 
 <body>
-    <h2>This is heading 2</h2>
-    <h3>This is heading 3</h3>
-    <h4>This is heading 4</h4>
-    <h5>This is heading 5</h5>
+    <h1>Blogs</h1>
+    {% for blog in blogs%}
+    <h2>{{ blog.title}}</h2>
+    <p>{{ blog.content | truncatewords:30 }}</p>
+    <h4>{{ blog.author }}</h4>
+    {% endfor %}
 </body>
-
 </html>
