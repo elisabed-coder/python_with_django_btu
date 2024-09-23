@@ -23,6 +23,8 @@ urlpatterns = [
     path('blogs/', include("blogs.urls")),
     path('bookshop/', include('bookshop.urls')),
     path('students/', include('students.urls')),
+    path('student_management/', include('student_managment_system.urls')),  # Include the app's URLs
+
 
     path('', articles, name='blogs_list'),
 

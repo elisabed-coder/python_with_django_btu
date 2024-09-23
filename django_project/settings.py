@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "bookshop",
     "students",
     "blog_list",
+    "student_managment_system",
 
     # third-party
     'import_export',
@@ -60,13 +61,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'djangoProject.urls'
+ROOT_URLCONF = 'django_project.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+          'DIRS': [
+            BASE_DIR / 'templates',  # Path to the base templates directory
+            BASE_DIR / 'student_managment_system' / 'templates'  # Path to templates in the student management app
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangoProject.wsgi.application'
+WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
 # Database
