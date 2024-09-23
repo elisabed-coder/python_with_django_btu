@@ -1,0 +1,31 @@
+{% extends "students/index.html" %}
+{% block content %}
+<section>
+    <form action="#" method="POST">
+    {% csrf_token %}
+        <h1>Add Student</h1>
+        <label for="student_number">Student Number:</label>
+        <input type="number" id="student_number" name="student_number" required>
+        <hr/>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" maxlength="50" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" maxlength="50" required>
+        <hr>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" maxlength="50" required>
+
+        <label for="field_of_study">Field of Study:</label>
+        <input type="text" id="field_of_study" name="field_of_study" maxlength="50" required>
+        <hr>
+        <label for="gpa">GPA:</label>
+        <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4.0" required>
+        <hr>
+        <button type="submit">Submit</button>
+
+    </form>
+
+</section>
+{% endblock %}
