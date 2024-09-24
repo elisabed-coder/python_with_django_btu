@@ -36,3 +36,12 @@ def update_student(request, id):
     else:
         form = AddStudentForm(instance=student)
     return render(request, 'students/update.html', {'form': form})
+
+
+def delete_student(request, id):
+    student = get_object_or_404(Student, pk=id)
+    if request.method == "POST":
+        student.delete()
+        return HttpResponse('Student deleted successfully')
+    return render(request, 'students/delete_student.html')
+
