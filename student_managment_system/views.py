@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from student_managment_system.models import Student
+from student_managment_system.forms import  AddStudentForm
 
 # Create your views here.
 def index(request):
@@ -16,14 +17,20 @@ def view_student(request, id):
 
 
 def add_student(request):
-    if request.method == 'POST':
-       Student.objects.create(
-           student_number = request.POST['student_number'],
-           first_name=request.POST['first_name'],
-           last_name=request.POST['last_name'],
-           email = request.POST['email'],
-           field_of_study=request.POST['field_of_study'],
-           gpa=request.POST['gpa'],
-       )
+    if request.method == "POST":
+       form = AddStudentForm(request.POST)
+       if form.is_valid():
+           # data = form.cleaned_data
+           # Student.objects.create(
+           #     student_number = data['student_number'],
+           #     first_name = data['first_name'],
+           #     last_name = data['last_name'],
+           #     email = data['email'],
+           #     field_of_study = data['field_of_study'],
+           #     gpa = data['gpa'],
+           # )
+           form.save()
        return HttpResponse('Student added successfully')
-    return render(request, 'students/add_student.html')
+    else:
+        form = AddStudentForm()
+    return render(request, 'students/add_student.html', {'form': form})
