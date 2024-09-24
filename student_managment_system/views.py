@@ -25,6 +25,14 @@ def add_student(request):
         form = AddStudentForm()
     return render(request, 'students/add_student.html', {'form': form})
 
-#
-# def add_student(request):
-#     if request.method == "POST":
+
+def update_student(request, id):
+    student = get_object_or_404(Student, pk=id)
+    if request.method == "POST":
+        form = AddStudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Student updated successfully')
+    else:
+        form = AddStudentForm(instance=student)
+    return render(request, 'students/update.html', {'form': form})

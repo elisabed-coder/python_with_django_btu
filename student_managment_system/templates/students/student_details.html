@@ -3,11 +3,15 @@
 <section>
     <a href="{% url 'index' %}"><button>GO BACK</button>
 </a>
-    <li>{{ student.student_number }}</li>
+    <ul>
+        <li>{{ student.student_number }}</li>
     <li>{{ student.first_name }}</li>
     <li>{{ student.last_name }}</li>
     <li>{{ student.email }}</li>
     <li>{{ student.field_of_study }}</li>
     <li>{{ student.gpa }}</li>
+    </ul>
+    <a href="{% url 'update_student' student.id %}">Edit</a>
+
 </section>
 {% endblock %}

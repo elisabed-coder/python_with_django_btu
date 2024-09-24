@@ -1,0 +1,11 @@
+{% extends "students/index.html" %}
+{% block content %}
+<section>
+    <h1>update Student information</h1>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+</section>
+{% endblock %}
+
