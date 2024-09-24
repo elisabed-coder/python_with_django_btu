@@ -2,14 +2,8 @@
 {% block content %}
 <section>
     <h1>Add Student</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p}}
-<!--        {% for field in form %}-->
-<!--            {% if field.errors %}-->
-<!--                <div class="error">{{ field.error }}</div>-->
-<!--            {% endif %}-->
-<!--        {% endfor %}-->
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
 </section>

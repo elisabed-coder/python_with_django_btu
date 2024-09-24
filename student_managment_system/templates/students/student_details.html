@@ -1,6 +1,8 @@
 {% extends "students/index.html" %}
 {% block content %}
 <section>
+    <a href="{% url 'index' %}"><button>GO BACK</button>
+</a>
     <li>{{ student.student_number }}</li>
     <li>{{ student.first_name }}</li>
     <li>{{ student.last_name }}</li>

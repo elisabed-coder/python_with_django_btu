@@ -24,3 +24,7 @@ def add_student(request):
     else:
         form = AddStudentForm()
     return render(request, 'students/add_student.html', {'form': form})
+
+#
+# def add_student(request):
+#     if request.method == "POST":
