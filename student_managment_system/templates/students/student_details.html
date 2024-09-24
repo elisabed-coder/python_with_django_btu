@@ -12,6 +12,7 @@
     <li>{{ student.gpa }}</li>
     </ul>
     <a href="{% url 'update_student' student.id %}">Edit</a>
+    <a href="{% url 'delete_student' student.id %}">delete</a>
 
 </section>
 {% endblock %}

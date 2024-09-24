@@ -1,45 +1,46 @@
+from lib2to3.fixes.fix_input import context
+
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from student_managment_system.models import Student
 from student_managment_system.forms import  AddStudentForm
 
-# Create your views here.
-def index(request):
-    return render(request, 'students/index.html', {
-        'students': Student.objects.all(),
-    })
+class StudentListView(ListView):
+    model = Student
+    context_object_name = 'students'
+    template_name = 'students/index.html'
+
+class StudentsDetailsView(DetailView):
+    model = Student
+    template_name ="students/student_details.html "
+    context_object_name = 'student'
 
 
-def view_student(request, id):
-    student = get_object_or_404(Student, pk=id)
-    return render(request, 'students/student_details.html', {'student': student})
+
+class AddStudentView(CreateView):
+    model = Student
+    form_class = AddStudentForm
+    template_name = "students/add_student.html"
+    success_url = reverse_lazy('index')
 
 
-def add_student(request):
-    if request.method == "POST":
-       form = AddStudentForm(request.POST)
-       if form.is_valid():
-           form.save()
-           return HttpResponse('Student added successfully')
-    else:
-        form = AddStudentForm()
-    return render(request, 'students/add_student.html', {'form': form})
+class StudentUpdateView(UpdateView):
+    model = Student
+    form_class = AddStudentForm
+    template_name = "students/update.html"
+    success_url = reverse_lazy('index')
+    context_object_name = 'student'
 
+class StudentDeleteView(DeleteView):
+    model = Student
+    success_url = reverse_lazy('index')
+    context_object_name = 'student'
+    template_name = "students/delete_student.html"
 
-def update_student(request, id):
-    student = get_object_or_404(Student, pk=id)
-    if request.method == "POST":
-        form = AddStudentForm(request.POST, instance=student)
-        if form.is_valid():
-            form.save()
-            return HttpResponse('Student updated successfully')
-    else:
-        form = AddStudentForm(instance=student)
-    return render(request, 'students/update.html', {'form': form})
-
-
-def delete_student(request, id):
-    student = get_object_or_404(Student, pk=id)
+def delete_student(request, pk):
+    student = get_object_or_404(Student, pk=pk)
     if request.method == "POST":
         student.delete()
         return HttpResponse('Student deleted successfully')
