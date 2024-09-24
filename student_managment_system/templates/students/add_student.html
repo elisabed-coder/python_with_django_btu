@@ -4,8 +4,14 @@
     <h1>Add Student</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p}}
+<!--        {% for field in form %}-->
+<!--            {% if field.errors %}-->
+<!--                <div class="error">{{ field.error }}</div>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
         <button type="submit">Submit</button>
     </form>
 </section>
 {% endblock %}
+
